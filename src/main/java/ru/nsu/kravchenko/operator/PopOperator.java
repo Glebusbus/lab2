@@ -5,10 +5,7 @@ import ru.nsu.kravchenko.context.AbsractContext;
 public class PopOperator implements IOperator {
 
 
-    @Override
-    public IOperator get() {
-        return new PopOperator();
-    }
+
 
     @Override
     public void calculate(AbsractContext context) {

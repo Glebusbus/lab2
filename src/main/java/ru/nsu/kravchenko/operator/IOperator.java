@@ -5,6 +5,6 @@ import ru.nsu.kravchenko.context.AbsractContext;
 
 import java.util.function.Supplier;
 
-public interface IOperator extends Supplier<IOperator> {
+public interface IOperator  {
     void calculate(AbsractContext context);
 }

@@ -7,8 +7,5 @@ class SqrOperator extends UnOperator {
         return (float) Math.sqrt(a);
     }
 
-    @Override
-    public IOperator get() {
-        return new SqrOperator();
-    }
+
 }

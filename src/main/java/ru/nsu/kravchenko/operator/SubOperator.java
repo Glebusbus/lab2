@@ -6,8 +6,5 @@ class SubOperator extends BinOperator {
         return a-b;
     }
 
-    @Override
-    public IOperator get() {
-        return new SubOperator();
-    }
+
 }

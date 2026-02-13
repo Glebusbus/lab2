@@ -10,8 +10,5 @@ class DivOperator extends BinOperator {
         return a/b;
     }
 
-    @Override
-    public IOperator get() {
-        return new DivOperator();
-    }
+
 }

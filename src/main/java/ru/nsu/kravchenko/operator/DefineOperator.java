@@ -19,8 +19,5 @@ class DefineOperator implements IOperator {
         }
     }
 
-    @Override
-    public IOperator get() {
-        return new DefineOperator();
-    }
+
 }

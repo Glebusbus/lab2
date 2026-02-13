@@ -25,8 +25,5 @@ class PushOperator implements IOperator {
         }
     }
 
-    @Override
-    public IOperator get() {
-        return new PushOperator();
-    }
+
 }
