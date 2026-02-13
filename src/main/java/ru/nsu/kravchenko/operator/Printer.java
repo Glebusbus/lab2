@@ -10,7 +10,7 @@ class Printer extends UnOperator {
 
     @Override
     protected float getResult(float a) {
-        System.out.println(a);
+        System.out.print(a+" ");
         return a;
     }
 }
