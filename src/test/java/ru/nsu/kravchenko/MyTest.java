@@ -156,7 +156,7 @@ public class MyTest {
         System.setOut(originalOut);
 
         String out = outContent.toString();
-        assertEquals("420.0 ", out);
+        assertEquals("420.0\n", out);
     }
 
 }

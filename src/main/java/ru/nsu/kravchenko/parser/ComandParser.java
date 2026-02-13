@@ -28,6 +28,10 @@ class ComandParser implements IComandParser{
         while (scanner.hasNext()){
             parseLine(scanner);
 
+            if(comand.charAt(0) == '#'){
+                continue;
+            }
+
             IOperator operator;
 
             try {
