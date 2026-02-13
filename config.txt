@@ -1,0 +1,9 @@
+DEFINE a 2
+PUSH a
+PUSH a
++
+POP a
+PUSH a
+PUSH a
++
+PRINT
