@@ -4,6 +4,8 @@ import ru.nsu.kravchenko.context.AbsractContext;
 import ru.nsu.kravchenko.operator.IOperFactory;
 import ru.nsu.kravchenko.operator.IOperator;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 class ComandParser implements IComandParser{
@@ -15,18 +17,27 @@ class ComandParser implements IComandParser{
         this.factory = factory;
     }
 
-    private void parseLine(Scanner scanner){
-        String[] line = scanner.nextLine().split(" ");
-        comand = line[0];
-        params = new String[line.length - 1];
-        for (int i = 1; i < line.length; i++) {
-            params[i-1] = line[i];
+    private void parseLine(String line){
+        String[] lines = line.split(" ");
+        comand = lines[0];
+        params = new String[lines.length - 1];
+        for (int i = 1; i < lines.length; i++) {
+            params[i-1] = lines[i];
         }
     }
     @Override
-    public void run(Scanner scanner, AbsractContext context) {
-        while (scanner.hasNext()){
-            parseLine(scanner);
+    public void run(BufferedReader reader, AbsractContext context) {
+        String line;
+
+        while (true){
+
+            try {
+                if (!((line = reader.readLine()) != null)) break;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            parseLine(line);
 
             if(comand.charAt(0) == '#'){
                 continue;
