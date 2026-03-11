@@ -4,10 +4,7 @@ import ru.nsu.kravchenko.context.AbsractContext;
 import ru.nsu.kravchenko.operator.OperFactory;
 import ru.nsu.kravchenko.parser.IComandParser;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
@@ -15,18 +12,35 @@ public class Main {
 
 
 
-        String resource = "config.txt";
+       if(args.length == 1){
+           try(BufferedReader r = new BufferedReader(new FileReader(args[0]))){
+               run(r);
+           } catch (Exception e) {
+               System.out.println(e.getMessage());
+           }
+
+
+       }else if (args.length == 0) {
+           try(BufferedReader r = new BufferedReader(new InputStreamReader(System.in))){
+               run(r);
+           } catch (Exception e) {
+               System.out.println(e.getMessage());
+           }
+       } else {
+           System.out.println("Ivalid arguments");
+       }
+
+    }
+
+    private static void run(BufferedReader reader){
         AbsractContext context = AbsractContext.makeContext();
         OperFactory factory = new OperFactory();
         IComandParser parser = IComandParser.makeParser(factory);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("config.txt"))){
-            parser.run(reader, context);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-
-
+        parser.run(reader, context);
     }
+
+
+
+
 }

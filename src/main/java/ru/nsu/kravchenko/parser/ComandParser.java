@@ -6,7 +6,7 @@ import ru.nsu.kravchenko.operator.IOperator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Scanner;
+
 
 class ComandParser implements IComandParser{
     private IOperFactory factory;
@@ -30,15 +30,22 @@ class ComandParser implements IComandParser{
         String line;
 
         while (true){
-
             try {
-                if (!((line = reader.readLine()) != null)) break;
+                line = reader.readLine();
+
+                if (line == null) {
+                    break;
+                }
+
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.out.println("Error reading input: " + e.getMessage());
+                break;
             }
 
+            if (line.trim().isEmpty()) {
+                continue;
+            }
             parseLine(line);
-
             if(comand.charAt(0) == '#'){
                 continue;
             }
@@ -60,9 +67,8 @@ class ComandParser implements IComandParser{
                 System.out.println("Error while calculating comand-operator: ");
                 System.out.println(e.getMessage());
             }
-
-
-
         }
+
     }
+
 }
